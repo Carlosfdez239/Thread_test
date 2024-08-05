@@ -1,0 +1,75 @@
+^^^^^^^^^^^^ SenseMetrics Base Board ^^^^^^^^^^^^
+
+
+^^^^^^^^^^^^^^^^^^ $Rev: 56 $ ^^^^^^^^^^^^^^^^^^
+***************************************
+****           Sensemetrics        ****
+****            Base Board         ****
+** HW Version D3 FW Version 1.1.9A ****
+***************************************
+Initializing Log; Reset Reason BOR (0x02)
+!TS Init Pass
+!Permalog Init Pass
+NORMAL MODE
+WARNING! Battery voltage of 5181 is below threshold of 11000; not starting CPU!
+Fuel Gauge !Failed - ERROR (1)
+.LowBattStart! .LowBattStart! .LowBattStart! 
+[L] (4) DP1:RS232
+'.LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! Button: CPU OFF->ON
+.LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! !=.LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! !!=.LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! !!=.LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .LowBattStart! .;LowBattStart! .LowBattStart! .Recovered from Low Battery Start
+...;...!!=..;.....;.....;.....;.....;.....;....!!=.;
+{ACCESSIBLE:1\\0}
+{TIME\\0}.
+{ACCESSIBLE:1\\0}..
+{PONG\\0}..;
+{XBEE_RESET\\0}...
+{PONG\\0}..;.
+{ACCESSIBLE:1\\0}..
+{PONG\\0}
+{ACCESSIBLE:0\\0}..;..
+{FIRMWARE_VERSION\\0}
+{HARDWARE_VERSION\\0}
+{USB_ENABLE:1-0\\0}.
+{XBEE_RESET\\0}
+{PONG\\0}..;.
+{ACCESSIBLE:0\\0}..
+{PONG\\0}..;...
+{PONG\\0}..;
+{TIME\\0}!!!!(1->2).
+{ACCESSIBLE:0\\0}..
+{PONG\\0}
+{DEVICE_ADC_READ:1-0\\0}
+{DEVICE_ADC_READ:2-0\\0}
+{DEVICE_ADC_READ:3-0\\0}
+{DEVICE_ADC_READ:1-1\\0}
+{DEVICE_ADC_READ:2-1\\0}
+{DEVICE_ADC_READ:3-1\\0}.
+{INPUT_POWER:0\\0}.;
+{INPUT_POWER:3\\0}
+{INPUT_POWER:1\\0}
+{TEMP_READ\\0}
+{GAUGE_INFO:3\\0}
+{PRESS_READ\\0}
+{GAUGE_INFO:4\\0}.
+{INPUT_POWER:2\\0}
+{GAUGE_INFO:5\\0}..
+{PONG\\0}..;.
+{ACCESSIBLE:0\\0}..
+{PONG\\0}..;...
+{PONG\\0}..;.
+{ACCESSIBLE:0\\0}..
+{PONG\\0}..;...
+{PONG\\0}..;
+{TIME\\0}.
+{ACCESSIBLE:0\\0}!=..
+{PONG\\0}..;...
+{PONG\\0}..;.
+{ACCESSIBLE:0\\0}..
+{PONG\\0}..;...
+{PONG\\0}..;.
+{ACCESSIBLE:0\\0}..
+{PONG\\0}..;.Button: CPU ON->Good Night XBee, Good Night Cell Modem, Good Night Deviceport 1, Good Night Deviceport 2, Good Night Deviceport 3, Good Night Moon
+OFF
+.{bmc=1}...;..!!=..Resetting CMD after inactivity
+
+

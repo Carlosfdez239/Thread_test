@@ -1,0 +1,175 @@
+U-Boot SPL 2019.04-00002-g3a96252abe-dirty (Oct 26 2020 - 20:35:59 +0000)
+Trying to boot from MMC2
+Loading Environment from EXT4... ** File not found /boot/uboot.env **
+
+** Unable to read "/boot/uboot.env" from mmc0:1 **
+
+
+U-Boot 2019.04-00002-g3a96252abe-dirty (Oct 26 2020 - 20:35:59 +0000)
+
+CPU  : AM335X-GP rev 2.1
+I2C:   ready
+DRAM:  1 GiB
+No match for driver 'omap_hsmmc'
+No match for driver 'omap_hsmmc'
+Some drivers were not found
+Reset Source: Power-on reset has occurred.
+RTC 32KCLK Source: External.
+MMC:   OMAP SD/MMC: 0, OMAP SD/MMC: 1
+Loading Environment from EXT4... ** File not found /boot/uboot.env **
+
+** Unable to read "/boot/uboot.env" from mmc0:1 **
+Board: BeagleBone Black
+<ethaddr> not set. Validating first E-fuse MAC
+BeagleBone Black:
+BeagleBone Cape EEPROM: no EEPROM at address: 0x54
+BeagleBone Cape EEPROM: no EEPROM at address: 0x55
+BeagleBone Cape EEPROM: no EEPROM at address: 0x56
+BeagleBone Cape EEPROM: no EEPROM at address: 0x57
+Net:   eth0: MII MODE
+cpsw, usb_ether
+Press SPACE to abort autoboot in 0 seconds
+board_name=[A335BNLT] ...
+board_rev=[] ...
+switch to partitions #0, OK
+mmc0 is current device
+SD/MMC found on device 0
+switch to partitions #0, OK
+mmc1(part 0) is current device
+Scanning mmc 1:1...
+gpio: pin 56 (gpio 56) value is 0
+gpio: pin 55 (gpio 55) value is 0
+gpio: pin 54 (gpio 54) value is 0
+gpio: pin 53 (gpio 53) value is 1
+switch to partitions #0, OK
+mmc1(part 0) is current device
+gpio: pin 54 (gpio 54) value is 1
+Checking for: /uEnv.txt ...
+Checking for: /boot.scr ...
+Checking for: /boot/boot.scr ...
+Checking for: /boot/uEnv.txt ...
+gpio: pin 55 (gpio 55) value is 1
+1054 bytes read in 61 ms (16.6 KiB/s)
+Loaded environment from /boot/uEnv.txt
+debug: [dtb=sense.dtb] ...
+Using: dtb=sense.dtb ...
+Checking if uname_r is set in /boot/uEnv.txt...
+gpio: pin 56 (gpio 56) value is 1
+Running uname_boot ...
+loading /boot/vmlinuz-4.19.94-ti-r43 ...
+10097528 bytes read in 723 ms (13.3 MiB/s)
+debug: [enable_uboot_overlays=1] ...
+debug: [enable_uboot_cape_universal=1] ...
+debug: [uboot_base_dtb_univ=am335x-boneblack-uboot-univ.dtb] ...
+uboot_overlays: [uboot_base_dtb=am335x-boneblack-uboot-univ.dtb] ...
+uboot_overlays: Switching too: dtb=am335x-boneblack-uboot-univ.dtb ...
+loading /boot/dtbs/4.19.94-ti-r43/am335x-boneblack-uboot-univ.dtb ...
+60334 bytes read in 70 ms (840.8 KiB/s)
+uboot_overlays: [fdt_buffer=0x60000] ...
+uboot_overlays: loading /lib/firmware/BB-ADC-00A0.dtbo ...
+867 bytes read in 241 ms (2.9 KiB/s)
+uboot_overlays: loading /lib/firmware/BB-BONE-eMMC1-01-00A0.dtbo ...
+1584 bytes read in 537 ms (2 KiB/s)
+uboot_overlays: loading /lib/firmware/BB-HDMI-TDA998x-00A0.dtbo ...
+4915 bytes read in 413 ms (10.7 KiB/s)
+loading /boot/initrd.img-4.19.94-ti-r43 ...
+3342510 bytes read in 256 ms (12.5 MiB/s)
+debug: [console=ttyO0,115200n8 bone_capemgr.uboot_capemgr_enabled=1 root=/dev/mmcblk1p1 ro rootfstype=ext4 rootwait coherent_pool=1M net.ifnames=0 quiet] ...
+debug: [bootz 0x82000000 0x88080000:3300ae 88000000] ...
+## Flattened Device Tree blob at 88000000
+   Booting using the fdt blob at 0x88000000
+   Loading Ramdisk to 8fccf000, end 8ffff0ae ... OK
+   Loading Device Tree to 8fc5c000, end 8fccefff ... OK
+
+Starting kernel ...
+
+[    0.000799] timer_probe: no matching timers found
+[    0.163671] l4_wkup_cm:clk:0010:0: failed to disable
+[    1.064484] omap_voltage_late_init: Voltage driver support not added
+[    1.134027] pinctrl-single 44e10800.pinmux: pin PIN48 already requested by 481aa000.serial; cannot claim for 0-0070
+[    1.144680] pinctrl-single 44e10800.pinmux: pin-48 (0-0070) status -22
+[    1.151317] pinctrl-single 44e10800.pinmux: could not request pin 48 (PIN48) from group nxp_hdmi_bonelt_pins  on device pinctrl-single
+[    1.163492] tda998x 0-0070: Error applying setting, reverse things back
+[   39.099599] wkup_m3_ipc 44e11324.wkup_m3_ipc: could not get rproc handle
+[   39.282642] PM: Cannot get wkup_m3_ipc handle
+[  OK  ] Listening on Load/Save RF Kill Switch Status /dev/rfkill Watch.
+[ ***  ] (2 of 2) A start job is running for dev-ttyGS0.device (34s[***   ] (2 of 2) A start job is running for dev-ttyGS0.device (34s[**    ] (2 of 2) A start job is running for dev-ttyGS0.device (35s[*     ] (1 of 2) A start job is running for…-mmcblk0p2.device (35s[**    ] (1 of 2) A start job is running for…-mmcblk0p2.device (36s[***   ] (1 of 2) A start job is running for…-mmcblk0p2.device (36s[ ***  ] (2 of 2) A start job is running for dev-ttyGS0.device (37s[  *** ] (2 of 2) A start job is running for dev-ttyGS0.device (37s[   ***] (2 of 2) A start job is running for dev-ttyGS0.device (38s[    **] (1 of 2) A start job is running for…-mmcblk0p2.device (38s[     *] (1 of 2) A start job is running for…-mmcblk0p2.device (39s[    **] (1 of 2) A start job is running for…-mmcblk0p2.device (39s[   ***] (2 of 2) A start job is running for dev-ttyGS0.device (40s[  *** ] (2 of 2) A start job is running for dev-ttyGS0.device (40s[ ***  ] (2 of 2) A start job is running for dev-ttyGS0.device (41s[***   ] (1 of 2) A start job is running for…-mmcblk0p2.device (41s[**    ] (1 of 2) A start job is running for…-mmcblk0p2.device (42s[  OK  ] Found device /dev/mmcblk0p2.
+         Starting File System Check on /dev/mmcblk0p2...
+[  OK  ] Started File System Check Daemon to report status.
+[  OK  ] Started File System Check on /dev/mmcblk0p2.
+         Mounting /sensemetrics...
+[  OK  ] Mounted /sensemetrics.
+[  OK  ] Reached target Local File Systems.
+         Starting Raise network interfaces...
+         Starting Create Volatile Files and Directories...
+[FAILED] Failed to start Create Volatile Files and Directories.
+See 'systemctl status systemd-tmpfiles-setup.service' for details.
+         Starting Update UTMP about System Boot/Shutdown...
+         Starting Network Time Synchronization...
+[  OK  ] Started Entropy daemon using the HAVEGE algorithm.
+[  OK  ] Started Update UTMP about System Boot/Shutdown.
+[  OK  ] Started Network Time Synchronization.
+[  OK  ] Reached target System Time Synchronized.
+[  OK  ] Reached target System Initialization.
+[  OK  ] Listening on Avahi mDNS/DNS-SD Stack Activation Socket.
+[  OK  ] Started Monitor /dev/ttyCELL for cell.service.
+[  OK  ] Listening on D-Bus System Message Bus Socket.
+[  OK  ] Started Daily Cleanup of Temporary Directories.
+[  OK  ] Listening on ACPID Listen Socket.
+[  OK  ] Reached target Sockets.
+[  OK  ] Started ACPI Events Check.
+[  OK  ] Reached target Paths.
+[  OK  ] Started Timer to monitor eth0 link …eate default ppp0 route if needed.
+[  OK  ] Reached target Timers.
+[  OK  ] Reached target Basic System.
+         Starting Avahi mDNS/DNS-SD Stack...
+         Starting System Logging Service...
+         Starting Login Service...
+[  OK  ] Started Regular background program processing daemon.
+         Starting LSB: Load kernel modules needed to enable cpufreq scaling...
+[  OK  ] Started ACPI event daemon.
+         Starting LSB: snoopy...
+[  OK  ] Started D-Bus System Message Bus.
+[  OK  ] Started Avahi mDNS/DNS-SD Stack.
+         Starting Connection service...
+[  OK  ] Started System Logging Service.
+[  OK  ] Started LSB: snoopy.
+[  OK  ] Started Connection service.
+[  OK  ] Started Login Service.
+[  OK  ] Started Raise network interfaces.
+         Starting WPA supplicant...
+         Starting Hostname Service...
+[  OK  ] Started WPA supplicant.
+[  OK  ] Reached target Network.
+[  OK  ] Reached target Network is Online.
+         Starting LSB: Advanced IEEE 802.11 management daemon...
+         Starting LSB: Brings up/down network automatically...
+         Starting eth0-monitor...
+         Starting Advanced key-value store...
+         Starting Generic Board Startup...
+         Starting OpenBSD Secure Shell server...
+         Starting Permit User Sessions...
+         Starting Sensemetrics THREAD Startup Service...
+[  OK  ] Started LSB: Load kernel modules needed to enable cpufreq scaling.
+[  OK  ] Started LSB: Advanced IEEE 802.11 management daemon.
+[  OK  ] Started Permit User Sessions.
+[  OK  ] Started Hostname Service.
+[  OK  ] Started Getty on tty1.
+         Starting LSB: set CPUFreq kernel parameters...
+[  OK  ] Started eth0-monitor.
+[  OK  ] Started OpenBSD Secure Shell server.
+[  OK  ] Started Advanced key-value store.
+[  OK  ] Started LSB: set CPUFreq kernel parameters.
+[  OK  ] Started LSB: Brings up/down network automatically.
+[  OK  ] Started Sensemetrics THREAD Startup Service.
+[   79.634182] PM: Cannot get wkup_m3_ipc handle
+[***   ] (1 of 2) A start job is running for…oard Startup (1min 15s[**    ] (2 of 2) A start job is running for…tyGS0.device (1min 15s[*     ] (2 of 2) A start job is running for…tyGS0.device (1min 16s[**    ] (2 of 2) A start job is running for…tyGS0.device (1min 16s[***   ] (1 of 2) A start job is running for…oard Startup (1min 17s[ ***  ] (1 of 2) A start job is running for…oard Startup (1min 17s[  *** ] (1 of 2) A start job is running for…oard Startup (1min 18s[   ***] (2 of 2) A start job is running for…tyGS0.device (1min 18s[    **] (2 of 2) A start job is running for…tyGS0.device (1min 19s[     *] (2 of 2) A start job is running for…tyGS0.device (1min 19s         Starting eth0-monitor...
+[    **] (3 of 3) A start job is running for…tyGS0.device (1min 20s[  OK  ] Started eth0-monitor.
+[  OK  ] Found device /dev/ttyGS0.
+[  OK  ] Started Serial Getty on ttyGS0.
+[  OK  ] Reached target Login Prompts.
+[  OK  ] Started Generic Board Startup.
+[  OK  ] Reached target Multi-User System.
+         Starting Update UTMP about System Runlevel Changes...
+[  OK  ] Started Update UTMP about System Runlevel Changes.
+

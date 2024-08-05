@@ -1,0 +1,153 @@
+..;.....;.
+A   Display: [0] Voltages [1] DP1 [2] DP2 [3] DP3 [5] Pressure [6] Temperature [7] PowerBits
+B   RGB LED: [0] Off [1] Red [2] Yellow [3] Green [4] Teal [5] Blue [6] Purple [7] White [9] Init
+C   CPU: [0] Off [1] Sleep 1m [2] Wake [3] Halt Reset [4] Disable Reset | MSP430 JTAG: [5] Vi8iew Status
+D   Disable: [0] CHG_DISABLE [1] EXP_PWR_EN [2] +5V [3] SENSOR_PWR [4] SD_BOOT
+      [5] WDT_CLEAR [6] USB_ISO_EN [7] XB RESET [8] XB EN [9] CELL PWR
+E   Enable: [0] CHG_DISABLE [1] EXP_PWR_EN [2] +5V [3] SENSOR_PWR [4] SD_BOOT
+      [5] WDT_CLEAR [6] USB_ISO_EN [7] XB RESET [8] XB EN [9] CELL PWR
+F   Enable: [0] UV PIN CTRL [1] DP1 [2] DP2 [3] DP3 [4] All DPs [5] LIGHT_SENSOR_EN
+G   Disable: [0] UV PIN CTRL [1] DP1 [2] DP2 [3] DP3 [4] All DPs [5] LIGHT_SENSOR_EN
+H   Tests: [0] I2C0 (Sensors) [1] I2C1 (DPs) [2] DP1 [3] DP2 [4] DP3 [5] Sensors [6] Voltages [7] LED 
+I   Display: [0] MCU Inputs [1] MCU Out [5] System [6] Parser [8] Display Log [9] Erase Log
+J   Enable DP1: [0] USB [1] +5V [2] TRIM [3] Spare [9] Reset USB
+K   Disable DP1: [0] USB [1] +5V [2] TRIM [3] Spare
+L   DP1: [0] 0V [1] 12V [2] 13.5V [3] 15V | [4] RS232 [5] RS485 [6] SDI12 [7] None
+      [8] Display [9] CONFIGURE
+M   DP2: [0] 0V [1] 12V [2] 13.5V [3] 15V | [4] RS232 [5] RS485 [6] SDI12 [7] None
+      [8] Display [9] CONFIGURE
+N   DP3: [0] 0V [1] 12V [2] 13.5V [3] 15V | [4] RS232 [5] RS485 [6] SDI12 [7] None
+      [8] Display [9] CONFIGURE
+O   LED Mode = [0] Off [1] Boot [2] Sleep [3] Acc [4] UnAcc [5] SleepDance [6] SD boot [7] Batt Limit [8] AccOff
+P   MPP: [0] DISPLAY [1] MIN [2] -5 [3] -1 [4] MID [5] +1 [6] +5 [7] MAX
+Q   Fuel Gauge: [0] I2C Test [1] Init [2] ValidCheck [3] Display [4] Exit ROM [5] Load
+      [6] Start Log [7] Stop Log [8] Set Limits to 80/20 [9] Reset Limits
+R   PowerSleep Test: [0] Clear [1] XBee [2] Cell [4] DP1_5V [5] DP1 Power [6] DP2 Power
+      [7] DP3 Power [8] show [9] Power Sleep!
+U   Main Input Undervoltage Pin Control: [0] 17.7V [1] 10.5V (DEFAULT)
+?   Display this menu
+....;.....;.....;.....;.!!=....;.....;.....;.....;.....;.....;..!!=...;.....;.....;.....;.....;.....;...!!=..;.....;.....;.....;.....;.....;.
+A   Display: [0] Voltages [1] DP1 [2] DP2 [3] DP3 [5] Pressure [6] Temperature [7] PowerBits
+B   RGB LED: [0] Off [1] Red [2] Yellow [3] Green [4] Teal [5] Blue [6] Purple [7] White [9] Init
+C   CPU: [0] Off [1] Sleep 1m [2] Wake [3] Halt Reset [4] Disable Reset | MSP430 JTAG: [5] Vi8iew Status
+D   Disable: [0] CHG_DISABLE [1] EXP_PWR_EN [2] +5V [3] SENSOR_PWR [4] SD_BOOT
+      [5] WDT_CLEAR [6] USB_ISO_EN [7] XB RESET [8] XB EN [9] CELL PWR
+E   Enable: [0] CHG_DISABLE [1] EXP_PWR_EN [2] +5V [3] SENSOR_PWR [4] SD_BOOT
+      [5] WDT_CLEAR [6] USB_ISO_EN [7] XB RESET [8] XB EN [9] CELL PWR
+F   Enable: [0] UV PIN CTRL [1] DP1 [2] DP2 [3] DP3 [4] All DPs [5] LIGHT_SENSOR_EN
+G   Disable: [0] UV PIN CTRL [1] DP1 [2] DP2 [3] DP3 [4] All DPs [5] LIGHT_SENSOR_EN
+H   Tests: [0] I2C0 (Sensors) [1] I2C1 (DPs) [2] DP1 [3] DP2 [4] DP3 [5] Sensors [6] Voltages [7] LED 
+I   Display: [0] MCU Inputs [1] MCU Out [5] System [6] Parser [8] Display Log [9] Erase Log
+J   Enable DP1: [0] USB [1] +5V [2] TRIM [3] Spare [9] Reset USB
+K   Disable DP1: [0] USB [1] +5V [2] TRIM [3] Spare
+L   DP1: [0] 0V [1] 12V [2] 13.5V [3] 15V | [4] RS232 [5] RS485 [6] SDI12 [7] None
+      [8] Display [9] CONFIGURE
+M   DP2: [0] 0V [1] 12V [2] 13.5V [3] 15V | [4] RS232 [5] RS485 [6] SDI12 [7] None
+      [8] Display [9] CONFIGURE
+N   DP3: [0] 0V [1] 12V [2] 13.5V [3] 15V | [4] RS232 [5] RS485 [6] SDI12 [7] None
+      [8] Display [9] CONFIGURE
+O   LED Mode = [0] Off [1] Boot [2] Sleep [3] Acc [4] UnAcc [5] SleepDance [6] SD boot [7] Batt Limit [8] AccOff
+P   MPP: [0] DISPLAY [1] MIN [2] -5 [3] -1 [4] MID [5] +1 [6] +5 [7] MAX
+Q   Fuel Gauge: [0] I2C Test [1] Init [2] ValidCheck [3] Display [4] Exit ROM [5] Load
+      [6] Start Log [7] Stop Log [8] Set Limits to 80/20 [9] Reset Limits
+R   PowerSleep Test: [0] Clear [1] XBee [2] Cell [4] DP1_5V [5] DP1 Power [6] DP2 Power
+      [7] DP3 Power [8] show [9] Power Sleep!
+U   Main Input Undervoltage Pin Control: [0] 17.7V [1] 10.5V (DEFAULT)
+?   Display this menu
+...!!=.;.....;.....;.....;.....;.....;.....;!!=.....;.....;.....;.....;.....;.....;.!!=....;.....;....
+[L] (4) DP1:RS232
+'.;.....;Button: CPU OFF->ON
+.....;.....;..!!=...;.....;.....;.....;.....;.....;...!!=..;.....;.....;.....;.....;.....;....!!=.;.....;.....;.....;.....;.....;.....;!!=.....;.....;.....;.....;.....;.....;.!!=....;.....;
+{ACCESSIBLE:1\\0}
+{TIME\\0}
+{ACCESSIBLE:1\\0}...
+{PONG\\0}.
+{XBEE_RESET\\0}.;...
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}
+{ACCESSIBLE:0\\0}..;.
+{XBEE_RESET\\0}.
+{FIRMWARE_VERSION\\0}
+{HARDWARE_VERSION\\0}
+{USB_ENABLE:1-0\\0}.
+{ACCESSIBLE:1\\0}
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}.
+{TEMP_READ\\0}.
+{INPUT_POWER:0\\0}
+{INPUT_POWER:1\\0}!=.
+{PONG\\0}
+{INPUT_POWER:2\\0}
+{PRESS_READ\\0}.
+{INPUT_POWER:3\\0}
+{GAUGE_INFO:3\\0}
+{GAUGE_INFO:4\\0}.;
+{GAUGE_INFO:5\\0}
+{ACCESSIBLE:0\\0}
+{DEVICE_ADC_READ:1-0\\0}
+{DEVICE_ADC_READ:2-0\\0}
+{DEVICE_ADC_READ:3-0\\0}
+{DEVICE_ADC_READ:1-1\\0}
+{ACCESSIBLE:1\\0}
+{DEVICE_ADC_READ:2-1\\0}
+{DEVICE_ADC_READ:3-1\\0}...
+{PONG\\0}..;
+{TIME\\0}
+{ACCESSIBLE:1\\0}.
+{TIME:1716961431\\0}
+{TIME\\0}..
+{PONG\\0}..;...
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}..;...
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}!=..;...
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}..;...
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}..;...
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}.!!=.;...
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}..;...
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}.
+{XBEE_RESET\\0}.;...
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}..;!!=...
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}..;...
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}..;...
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}..;.!!=..
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}..;...
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}.
+{XBEE_RESET\\0}.;...
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}..;..!!=.
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}..;...
+{PONG\\0}..;
+{ACCESSIBLE:1\\0}...
+{PONG\\0}..;...
+{PONG\\0}..;Button: CPU ON->Good Night XBee, Good Night Cell Modem, Good Night Deviceport 1, Good Night Deviceport 2, Good Night Deviceport 3, Good Night Moon
+OFF
+

@@ -1,0 +1,39 @@
+
+Nmap scan report for thread-0ba6c6.home (192.168.1.72)
+Host is up (0.00044s latency).
+Not shown: 999 closed tcp ports (reset)
+PORT   STATE SERVICE
+22/tcp open  ssh
+MAC Address: 6C:79:B8:6C:6A:B0 (Texas Instruments)
+
+**********************************************
+
+carlos@carlos-workstation:/$ sudo ssh root@192.168.1.72
+[sudo] contraseña para carlos: 
+The authenticity of host '192.168.1.72 (192.168.1.72)' can't be established.
+ED25519 key fingerprint is SHA256:i9kUelSraDNTUrd5Tnx4djSten/WDgrhhjlpiZpmqks.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '192.168.1.72' (ED25519) to the list of known hosts.
+                                _       _
+ ___ ___ _ _  ___ ___ _ __  ___| |_ _ _(_)__ ___
+(_-</ -_) ' \(_-</ -_) '  \/ -_)  _| '_| / _(_-<
+/__/\___|_||_/__/\___|_|_|_\___|\__|_| |_\__/__/
+
+.___________. __    __  .______       _______     ___       _______
+|           ||  |  |  | |   _  \     |   ____|   /   \     |       \
+`---|  |----`|  |__|  | |  |_)  |    |  |__     /  ^  \    |  .--.  |
+    |  |     |   __   | |      /     |   __|   /  /_\  \   |  |  |  |
+    |  |     |  |  |  | |  |\  \----.|  |____ /  _____  \  |  '--'  |
+    |__|     |__|  |__| | _| `._____||_______/__/     \__\ |_______/
+
+root@192.168.1.72's password: 
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+root@THREAD-0BA6C6:~# 
+

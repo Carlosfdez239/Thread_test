@@ -16,9 +16,11 @@ To-Do
     [ ] Gestionar los tres voltajes
     [ ] Pasar como parámetro el puerto DP y según el puerto lanzar los comandos del MSP
     [ ] Returns para cada configuración
+    [ ] Actualizar informe del Test
 Issue
     [ ] Al arrancar la BK de cero, no podemos parametrizar la corriente. No aparece el texto Sense en el display.
     [ ] Queda mensaje Error en el display
+    [ ] 
 
 
 '''

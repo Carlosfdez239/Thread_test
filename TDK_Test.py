@@ -12,6 +12,7 @@ en la Bk8600 programaremos una corriente de 1.5A
 
 por el puerto ttyUSB4 consultaremos la lectura de los valores para voltaje y corriente
 
+<<<<<<< HEAD
 To-Do
     [ ] Gestionar los tres voltajes
     [ ] Pasar como parámetro el puerto DP y según el puerto lanzar los comandos del MSP
@@ -23,6 +24,8 @@ Issue
     [ ] 
 
 
+=======
+>>>>>>> 663f647e0eba227e13c5aa6b6267e285b812db32
 '''
 
 import subprocess
@@ -31,7 +34,11 @@ import time
 from colorama import Fore, Style, Back
 
 FTDI = '/dev/ttyUSB0'
+<<<<<<< HEAD
 BK='/dev/ttyUSB1'
+=======
+BK='/dev/ttyUSB0'
+>>>>>>> 663f647e0eba227e13c5aa6b6267e285b812db32
 
 
 # Preparar MSP para consulta presion
@@ -52,6 +59,7 @@ def leer_tdk():
     # Abrir serial1 para mandar command a la carga electronica BK8600
     ser1 = serial.Serial(BK, 9600,bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE, timeout=1)  # Reemplaza '/dev/ttyFTDI' con el puerto correcto
     ser1.timeout = 1  # Tiempo de espera para la lectura en segundos
+<<<<<<< HEAD
     #hola = input('pulsa ON en la fuente BK para verificar la corriente')
     try:
         # Mandamos la orden de lectura a la carga electronica BK8600
@@ -111,12 +119,56 @@ def leer_tdk():
 
     except Exception as e:
         print(f'Error al leer en BK: {e}')
+=======
+    hola = input('pulsa ON en la fuente BK para verificar la corriente')
+    try:
+        # Mandamos la orden de control remoto a la carga electronica BK8600
+        #ser1.write(b'SYST:REM')
+
+        # Mandamos la orden de apagado de la carga electronica BK8600
+        #ser1.write(b'REM:SENS 1')
+        
+        # Mandamos la orden de encendido de la carga electronica BK8600
+        #ser1.write(b'REM:SENS 1')
+        #print(f'Activamos la carga electronica')
+
+        #Mandamos la petición de lectura de voltaje
+        #ser1.write(b'MEAS:VOLT?\n')
+        ser1.write(b'REM:SENS 1;:MEAS:VOLT?;CURR?\n')
+        #ser1.write(b'*IDN?\n')
+        #leemos la respuesta
+        voltaje = ser1.readline().decode().strip()
+        print(f'Voltaje leido --> {voltaje} Volt')
+        
+        # Mandamos la petición de lectura de la corriente
+        #ser1.write(b'MEAS:CURR?\n')
+        #time.sleep(0.1)
+        # Leemos la respuesta
+        #corriente = ser1.readline().decode().strip()
+        #print(f'Corriente leida --> {corriente} Amp')
+
+        # Mandamos la orden de apagado de la carga electronica BK8600
+        #ser1.write(b'REM:SENS 0')
+
+            
+        # Mandamos la orden de anular el control remoto a la carga electronica BK8600
+        #ser1.write(b'SYST:LOC')
+
+    except Exception as e:
+        print(f'Error al leer el voltaje: {e}')
+>>>>>>> 663f647e0eba227e13c5aa6b6267e285b812db32
     finally:
         ser1.close()
     
     # Cierra el puerto DP1
+<<<<<<< HEAD
     cierre_DP1 ="G1"
     ser = serial.Serial(FTDI, 115200)  
+=======
+    valida = input('presiona una tecla cuando estés lista para finalizar el test')
+    cierre_DP1 ="G1"
+    ser = serial.Serial(FTDI, 115200)  # Reemplaza '/dev/ttyFTDI' con el puerto correcto
+>>>>>>> 663f647e0eba227e13c5aa6b6267e285b812db32
     ser.timeout = 1  # Tiempo de espera para la lectura en segundos
     ser.write(cierre_DP1.encode())
     time.sleep(0.7)

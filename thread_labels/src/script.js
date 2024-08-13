@@ -14,7 +14,7 @@ const template = process.argv[4];
     const pngData = await bwipjs.toBuffer({
         bcid:        'datamatrix',       // Barcode type
         text:        datamatrixText,    // Text to encode
-        scale:       3,               // 3x scaling factor
+        scale:       1.5,               // 3x scaling factor
         width:       5,              // Adjust width as needed
         height:      5,              // Bar height, in millimeters
         includetext: false,            // Show human-readable text
@@ -64,8 +64,8 @@ const template = process.argv[4];
       // Convert mm to pixels
      const targetWidthPx = targetWidthMM * devicePixelRatio;
      const targetHeightPx = targetHeightMM * devicePixelRatio;
-     await page.setViewport({width: 0, height: 0, deviceScaleFactor: 7.5});
-
+     //await page.setViewport({width: 0, height: 0, deviceScaleFactor: 7.5});
+     await page.setViewport({width: 0, height: 0, deviceScaleFactor: 3.75});
       await page.waitForSelector('body')
 
 

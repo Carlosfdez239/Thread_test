@@ -16,3 +16,28 @@ Para la impresión usaremos el comando lpr -P y le pasamos dos parámetros
     Ejemplo: lpr -P Brother_QL_820NWB 1223AB1_eol.png
 
 '''
+import pylibdmtx
+from pylibdmtx.pylibdmtx import encode
+from PIL import Image, ImageDraw, ImageFont
+
+data = '37C140'
+encoded = encode(data.encode('utf8'))
+dmtx = Image.frombytes('RGB', (encoded.width, encoded.height), encoded.pixels)
+dmtx.save(data+'.png')
+
+# Crear una imagen de etiqueta
+label_width= 150
+#label_height = 100
+label_height = 50
+label = Image.new("RGB",(label_width,label_height),"white")
+
+# Añadimos texto a la etiqueta
+draw = ImageDraw.Draw (label)
+font = ImageFont.load_default()
+#draw.text((20,150),data, font=font, fill='black')
+draw.text((20,50),data, font=font, fill='black')
+label.save('etiqueta_3_'+data+'.png')
+
+# Añadimos el Datamatrix
+#label.paste(dmtx,(20,20))
+label.paste(dmtx,(50,50))

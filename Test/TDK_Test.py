@@ -310,7 +310,10 @@ def leer_tdk():
             DP3_Volt_13_5, 
             DP3_Amp_13_5,
             DP3_Volt_15, 
-            DP3_Amp_15,]
+            DP3_Amp_15,
+            Resultado[2],
+            Resultado[3],
+            ]
     return TDKS
 if __name__== "__main__":
     leer_tdk()

@@ -57,8 +57,11 @@ def leer_tdk():
     ser.close()
 
     # Abrir serial1 para mandar command a la carga electronica BK8600
-    ser1 = serial.Serial(BK, 9600,bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE, timeout=1)  # Reemplaza '/dev/ttyFTDI' con el puerto correcto
-    ser1.timeout = 1  # Tiempo de espera para la lectura en segundos
+    ser1 = serial.Serial(BK, 9600,bytesize=serial.EIGHTBITS, 
+                         parity=serial.PARITY_NONE, 
+                         stopbits=serial.STOPBITS_ONE, 
+                         timeout=1)  # Parametrizamos la comunicación serie
+    
 <<<<<<< HEAD
     #hola = input('pulsa ON en la fuente BK para verificar la corriente')
     try:

@@ -51,7 +51,7 @@ def leer_tdk():
         ser.write(comando.encode())
         #print(f"Ejecutando comando: {comando}")
         puerto = "DP1"
-        Resultado = Parametriza_BK(puerto)
+        Resultado = Parametriza_BK()
         time.sleep(0.4)
         # Analizamos el resultado para los 12v
         if comando == "l1":
@@ -129,7 +129,7 @@ def leer_tdk():
         ser.write(comando.encode())
         #print(f"Ejecutando comando: {comando}")
         puerto = "DP2"
-        Resultado = Parametriza_BK(puerto)
+        Resultado = Parametriza_BK()
         time.sleep(0.4)
         # Analizamos el resultado para los 12v
         if comando == "m1":
@@ -207,7 +207,7 @@ def leer_tdk():
         ser.write(comando.encode())
         #print(f"Ejecutando comando: {comando}")
         puerto = "DP3"
-        Resultado = Parametriza_BK(puerto)
+        Resultado = Parametriza_BK()
         time.sleep(0.4)
         # Analizamos el resultado para los 12v
         if comando == "n1":

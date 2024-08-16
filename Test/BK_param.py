@@ -7,8 +7,8 @@ Parametrizamos el uso de la BK 8600 configurando una corriente de 1,5A
 por el puerto ttyUSB4 consultaremos la lectura de los valores para voltaje y corriente
 
 To-Do
-    [ ] Pasar como parámetro el puerto DP
-    [ ] Returns para cada configuración
+    [x] Pasar como parámetro el puerto DP --> 16/08/2024
+    [x] Returns para cada configuración --> 16/08/2024
 Issue
     [ ] Al arrancar la BK de cero, no podemos parametrizar la corriente. No aparece el texto Sense en el display.
     [ ] Queda mensaje Error en el display
@@ -24,7 +24,7 @@ from colorama import Fore, Style, Back
 
 BK='/dev/ttyUSB4'
 
-def Parametriza_BK(DP):
+def Parametriza_BK():
     # Abrir serial1 para mandar command a la carga electronica BK8600
     ser1 = serial.Serial(BK, 9600,bytesize=serial.EIGHTBITS, 
                         parity=serial.PARITY_NONE, 

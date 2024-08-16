@@ -29,7 +29,9 @@
 #               [x] --> Temperature
 #               [ ] --> Battery test date
 #               [ ] --> Battery test  ([ PASS ])
-#               [ ] --> 
+#               [x] --> TDK test --> 16/08/2024
+#
+
 import paramiko
 import subprocess
 import serial
@@ -42,7 +44,7 @@ from Temp_test import leer_temperatura
 from Version import Get_version
 from FW_test import Get_FW
 from Battery import Get_battery
-
+from TDK_Test import leer_tdk
 
 # Utilizamos Crono para capturar el tiempo del test
 Crono = time.time()
@@ -285,6 +287,7 @@ dato_temperatura = leer_temperatura()
 fw = Get_FW()
 version = Get_version()
 bateria = Get_battery()
+tdks = leer_tdk()
 print (f"El tiempo del test ha sido: {Total_test}")
 Info = Informe.crear_pdf(Serial,
                          Serial,
@@ -298,6 +301,7 @@ Info = Informe.crear_pdf(Serial,
                          fw,
                          version,
                          bateria,
+                         tdks,
                          )
 
 

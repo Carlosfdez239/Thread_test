@@ -18,7 +18,7 @@ fecha_Informe = fecha_Informe.strftime("%d/%m/%Y")
 
 #Creamos el documento pdf
 def crear_pdf(nombre, titulo,data_USB,data_232_DP1, data_232_DP2,data_232_DP3,
-              mac,presion,temperatura,Fw,Version, Bateria):
+              mac,presion,temperatura,Fw,Version, Bateria,TDKS):
     pdf = SimpleDocTemplate(directorio_pdf+nombre+".pdf", pagesize=A4)
 
     #Estilo de los párrafos
@@ -80,7 +80,26 @@ def crear_pdf(nombre, titulo,data_USB,data_232_DP1, data_232_DP2,data_232_DP3,
             ["Check USB", data_USB],
             ["RS232_DP1", data_232_DP1],
             ["RS232_DP2", data_232_DP2],
-            ["RS232_DP3", data_232_DP3]]
+            ["RS232_DP3", data_232_DP3],
+            ["TDK_12_DP1", TDKS[0]],
+            ["TDK_12_DP1", TDKS[1]],
+            ["TDK_13,5_DP1", TDKS[2]],
+            ["TDK_13,5_DP1", TDKS[3]],
+            ["TDK_15_DP1", TDKS[4]],
+            ["TDK_15_DP1", TDKS[5]],
+            ["TDK_12_DP2", TDKS[6]],
+            ["TDK_12_DP2", TDKS[7]],
+            ["TDK_13,5_DP2", TDKS[8]],
+            ["TDK_13,5_DP2", TDKS[9]],
+            ["TDK_15_DP2", TDKS[10]],
+            ["TDK_15_DP2", TDKS[11]],
+            ["TDK_12_DP3", TDKS[12]],
+            ["TDK_12_DP3", TDKS[13]],
+            ["TDK_13,5_DP3", TDKS[14]],
+            ["TDK_13,5_DP3", TDKS[15]],
+            ["TDK_15_DP3", TDKS[16]],
+            ["TDK_15_DP3", TDKS[17]],
+            ]
     tabla = Table(data)
 
     #Agregamos la tabla de controles visuales

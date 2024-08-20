@@ -44,5 +44,73 @@ Pro SX
 
 '''
 
+import paramiko
+import subprocess
+import serial
+import time
+from colorama import Fore, Style, Back
 
-pass
+hostname = '192.168.5.3'
+port = 22
+username = 'root'
+password = 'imus42'
+
+
+FTDI = '/dev/ttyUSB1'
+RS232='/dev/ttyUSB0'
+
+# Preparar comandos para activar XBEE
+XBEE_USB = ["D8","D7","E8","E7"]  
+
+# Comandos AT para XBEE
+XBEE_AT = ["+++","AT\n"]
+
+def Get_XBEE():
+
+    ser = serial.Serial(FTDI, 115200)  # Reemplaza '/dev/ttyFTDI' con el puerto correcto
+    ser.timeout = 1  # Tiempo de espera para la lectura en segundos
+    
+    for comando in XBEE_USB:
+        ser.write(comando.encode())
+        linea = ser.readline().decode().strip()
+        print(linea+'\n')
+        time.sleep(1)
+    
+    
+
+
+    try:
+        # Crea una instancia de SSHClient
+        ssh = paramiko.SSHClient()
+
+        # Permite que se añadan automáticamente hosts desconocidos (no es seguro en producción)
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+        # Conecta al servidor
+        ssh.connect(hostname, port, username, password)
+        
+        #for text in XBEE_AT:
+
+        # Ejecuta un comando (por ejemplo, 'ls -l')
+        inicializar = """(echo -e "+++"; cat< /dev/ttyO4) | head -n 10 """
+        stdin, stdout, stderr = ssh.exec_command(inicializar)
+        #stdin, stdout, stderr = ssh.exec_command('cat /dev/ttyS0 > /dev/ttyS0')
+        time.sleep (10)
+        respuesta = stdout.read().decode()
+        
+        print (respuesta)
+    
+    except paramiko.AuthenticationException:
+        print("Fallo de autenticación, verifica el nombre de usuario y la contraseña")
+    except paramiko.SSHException as ssh_ex:
+        print("Error al intentar conectarse al servidor:", ssh_ex)
+    time.sleep(10)
+    ser.write("d8".encode())
+    linea = ser.readline().decode().strip()
+    print(linea+'\n')
+    ser.write("d7".encode())
+    linea = ser.readline().decode().strip()
+    print(linea+'\n')
+    ser.close()
+if __name__ == "__main__":
+    Get_XBEE()

@@ -32,7 +32,7 @@ from colorama import Fore, Style, Back
 from BK_param import Parametriza_BK
 
 
-FTDI = '/dev/ttyUSB0'
+FTDI = '/dev/ttyUSB1'
 TOLERANCIA_AMP = 1.48
 
 # Preparar MSP para consulta presion
@@ -55,10 +55,10 @@ def leer_tdk():
         time.sleep(0.4)
         # Analizamos el resultado para los 12v
         if comando == "l1":
-            limite_inf = 11,0
+            limite_inf = 11.0
             Volt=Resultado[0]                   # la posición [0] corresponde al voltaje
             Amp=Resultado[1]                    # la posición [1] corresponde a la corriente
-            if float(Volt) > float(limite_inf):
+            if float(Volt) > limite_inf:
                 print(f'{Fore.YELLOW}{"Voltaje -->  "+Volt+ " V"}{Style.RESET_ALL}')
                 print(f'{Fore.GREEN}{"Test de Voltaje --> PASS"}{Style.RESET_ALL}')
                 DP1_Volt_12 = "[ PASS ]"
@@ -78,10 +78,10 @@ def leer_tdk():
 
         # Analizamos el resultado para los 13,5v   
         if comando == "l2":
-            limite_inf = 12,5
+            limite_inf = 12.0
             Volt=Resultado[0]                   # la posición [0] corresponde al voltaje
             Amp=Resultado[1]                    # la posición [1] corresponde a la corriente
-            if float(Volt) > float(limite_inf):
+            if float(Volt) > limite_inf:
                 print(f'{Fore.YELLOW}{"Voltaje -->  "+Volt+ " V"}{Style.RESET_ALL}')
                 print(f'{Fore.GREEN}{"Test de Voltaje --> PASS"}{Style.RESET_ALL}')
                 DP1_Volt_13_5 = "[ PASS ]"
@@ -101,10 +101,10 @@ def leer_tdk():
 
         # Analizamos el resultado para los 15v
         if comando == "l3":
-            limite_inf = 14,0
+            limite_inf = 13.5
             Volt=Resultado[0]
             Amp=Resultado[1]
-            if float(Volt) > float(limite_inf):
+            if float(Volt) > limite_inf:
                 print(f'{Fore.YELLOW}{"Voltaje -->  "+Volt+ " V"}{Style.RESET_ALL}')
                 print(f'{Fore.GREEN}{"Test de Voltaje --> PASS"}{Style.RESET_ALL}')
                 DP1_Volt_15 = "[ PASS ]"
@@ -133,10 +133,10 @@ def leer_tdk():
         time.sleep(0.4)
         # Analizamos el resultado para los 12v
         if comando == "m1":
-            limite_inf = 11,0
+            limite_inf = 11.0
             Volt=Resultado[0]                   # la posición [0] corresponde al voltaje
             Amp=Resultado[1]                    # la posición [1] corresponde a la corriente
-            if float(Volt) > float(limite_inf):
+            if float(Volt) > limite_inf:
                 print(f'{Fore.YELLOW}{"Voltaje -->  "+Volt+ " V"}{Style.RESET_ALL}')
                 print(f'{Fore.GREEN}{"Test de Voltaje --> PASS"}{Style.RESET_ALL}')
                 DP2_Volt_12 = "[ PASS ]"
@@ -156,10 +156,10 @@ def leer_tdk():
         
         # Analizamos el resultado para los 13,5v   
         if comando == "m2":
-            limite_inf = 12,5
+            limite_inf = 12.0
             Volt=Resultado[0]
             Amp=Resultado[1]
-            if float(Volt) > float(limite_inf):
+            if float(Volt) > limite_inf:
                 print(f'{Fore.YELLOW}{"Voltaje -->  "+Volt+ " V"}{Style.RESET_ALL}')
                 print(f'{Fore.GREEN}{"Test de Voltaje --> PASS"}{Style.RESET_ALL}')
                 DP2_Volt_13_5 = "[ PASS ]"
@@ -179,10 +179,10 @@ def leer_tdk():
 
         # Analizamos el resultado para los 15v
         if comando == "m3":
-            limite_inf = 14,0
+            limite_inf = 13.5
             Volt=Resultado[0]
             Amp=Resultado[1]
-            if float(Volt) > float(limite_inf):
+            if float(Volt) > limite_inf:
                 print(f'{Fore.YELLOW}{"Voltaje -->  "+Volt+ " V"}{Style.RESET_ALL}')
                 print(f'{Fore.GREEN}{"Test de Voltaje --> PASS"}{Style.RESET_ALL}')
                 DP2_Volt_15 = "[ PASS ]"
@@ -211,10 +211,10 @@ def leer_tdk():
         time.sleep(0.4)
         # Analizamos el resultado para los 12v
         if comando == "n1":
-            limite_inf = 11,0
+            limite_inf = 11.0
             Volt=Resultado[0]                   # la posición [0] corresponde al voltaje
             Amp=Resultado[1]                    # la posición [1] corresponde a la corriente
-            if float(Volt) > float(limite_inf):
+            if float(Volt) > limite_inf:
                 print(f'{Fore.YELLOW}{"Voltaje -->  "+Volt+ " V"}{Style.RESET_ALL}')
                 print(f'{Fore.GREEN}{"Test de Voltaje --> PASS"}{Style.RESET_ALL}')
                 DP3_Volt_12 = "[ PASS ]"
@@ -234,10 +234,10 @@ def leer_tdk():
         
         # Analizamos el resultado para los 13,5v   
         if comando == "n2":
-            limite_inf = 12,5
+            limite_inf = 12.0
             Volt=Resultado[0]
             Amp=Resultado[1]
-            if float(Volt) > float(limite_inf):
+            if float(Volt) > limite_inf:
                 print(f'{Fore.YELLOW}{"Voltaje -->  "+Volt+ " V"}{Style.RESET_ALL}')
                 print(f'{Fore.GREEN}{"Test de Voltaje --> PASS"}{Style.RESET_ALL}')
                 DP3_Volt_13_5 = "[ PASS ]"
@@ -257,10 +257,10 @@ def leer_tdk():
 
         # Analizamos el resultado para los 15v
         if comando == "n3":
-            limite_inf = 14,0
+            limite_inf = 13.5
             Volt=Resultado[0]
             Amp=Resultado[1]
-            if float(Volt) > float(limite_inf):
+            if float(Volt) > limite_inf:
                 print(f'{Fore.YELLOW}{"Voltaje -->  "+Volt+ " V"}{Style.RESET_ALL}')
                 print(f'{Fore.GREEN}{"Test de Voltaje --> PASS"}{Style.RESET_ALL}')
                 DP3_Volt_15 = "[ PASS ]"
@@ -314,6 +314,7 @@ def leer_tdk():
             Resultado[2],
             Resultado[3],
             ]
+    #print(TDKS)
     return TDKS
 if __name__== "__main__":
     leer_tdk()

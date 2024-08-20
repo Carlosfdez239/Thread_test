@@ -25,6 +25,8 @@ Type AT+CGMM
 Receive: LE910-SVG (depends on model)
 
 
+
+
 '''
 
 pass

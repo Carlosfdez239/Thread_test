@@ -18,7 +18,7 @@ fecha_Informe = fecha_Informe.strftime("%d/%m/%Y")
 
 #Creamos el documento pdf
 def crear_pdf(nombre, titulo,data_USB,data_232_DP1, data_232_DP2,data_232_DP3,
-              mac,presion,temperatura,Fw,Version, Bateria):
+              mac,presion,temperatura,Fw,Version, Bateria,Tdks):
     pdf = SimpleDocTemplate(directorio_pdf+nombre+".pdf", pagesize=A4)
 
     #Estilo de los párrafos
@@ -80,7 +80,27 @@ def crear_pdf(nombre, titulo,data_USB,data_232_DP1, data_232_DP2,data_232_DP3,
             ["Check USB", data_USB],
             ["RS232_DP1", data_232_DP1],
             ["RS232_DP2", data_232_DP2],
-            ["RS232_DP3", data_232_DP3]]
+            ["RS232_DP3", data_232_DP3],
+            ["TDK_DP1_12v_Voltage", Tdks[0]],
+            ["TDK_DP1_12v_Current", Tdks[1]],
+            ["TDK_DP1_13.5v_Voltage", Tdks[2]],
+            ["TDK_DP1_13.5v_Current", Tdks[3]],
+            ["TDK_DP1_15v_Voltage", Tdks[4]],
+            ["TDK_DP1_15v_Current", Tdks[5]],
+             ["TDK_DP2_12v_Voltage", Tdks[6]],
+            ["TDK_DP2_12v_Current", Tdks[7]],
+            ["TDK_DP2_13.5v_Voltage", Tdks[8]],
+            ["TDK_DP2_13.5v_Current", Tdks[9]],
+            ["TDK_DP2_15v_Voltage", Tdks[10]],
+            ["TDK_DP2_15v_Current", Tdks[11]],
+             ["TDK_DP3_12v_Voltage", Tdks[12]],
+            ["TDK_DP3_12v_Current", Tdks[13]],
+            ["TDK_DP3_13.5v_Voltage", Tdks[14]],
+            ["TDK_DP3_13.5v_Current", Tdks[15]],
+            ["TDK_DP3_15v_Voltage", Tdks[16]],
+            ["TDK_DP3_15v_Current", Tdks[17]],
+            
+            ]
     tabla = Table(data)
 
     #Agregamos la tabla de controles visuales
@@ -171,7 +191,7 @@ def crear_pdf(nombre, titulo,data_USB,data_232_DP1, data_232_DP2,data_232_DP3,
     
     tabla_firma = Table(data_firma)
 
-    # Creamos el estilo de esta tabla de encabezado
+    # Creamos el estilo de esta tabla de firma
     style_firma = TableStyle([('BACKGROUND',(0,0),(-1,-1), colors.white),
                                    ('TEXTCOLOR',(0,0),(-1,-1), colors.black),
                                    ('ALIGN', (0,0), (-1,-1),'CENTER'),

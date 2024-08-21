@@ -10,34 +10,41 @@ Para generar la etiqueta se lanza generate_label.sh y se pasan como parámetros
         - serial --> Formato de etiqueta del FCT (12mm x 26mm)
         - eol --> Formato de etiqueta del EOL (12mm x 15mm)
 
-Para la impresión usaremos el comando lpr -P y le pasamos dos parámetros
+Para la impresión usaremos el comando lp -d y le pasamos dos parámetros
     - El primer parámetro indica el hostname de la impresora
     - El segundo parámetro indica el nombre de la etiqueta a imprimir
-    Ejemplo: lpr -P Brother_QL_820NWB 1223AB1_eol.png
+    Ejemplo: lp -d Brother_QL_820NWB 1223AB1_eol.png
 
 '''
-import pylibdmtx
+import subprocess
 from pylibdmtx.pylibdmtx import encode
 from PIL import Image, ImageDraw, ImageFont
+import os
 
-data = '37C140'
-encoded = encode(data.encode('utf8'))
-dmtx = Image.frombytes('RGB', (encoded.width, encoded.height), encoded.pixels)
-dmtx.save(data+'.png')
+def Impr_label(data):
+    print(os.environ)
+    #data = '37C140'
+    encoded = encode(data.encode('utf8'))
+    dmtx = Image.frombytes('RGB', (encoded.width, encoded.height), encoded.pixels)
+    dmtx.save(data+'.png')
 
-# Crear una imagen de etiqueta
-label_width= 150
-#label_height = 100
-label_height = 50
-label = Image.new("RGB",(label_width,label_height),"white")
+    # Crear una imagen de etiqueta
+    label_width= 150
+    #label_height = 100
+    label_height = 50
+    label = Image.new("RGB",(label_width,label_height),"white")
 
-# Añadimos texto a la etiqueta
-draw = ImageDraw.Draw (label)
-font = ImageFont.load_default()
-#draw.text((20,150),data, font=font, fill='black')
-draw.text((20,50),data, font=font, fill='black')
-label.save('etiqueta_3_'+data+'.png')
+    # Añadimos texto a la etiqueta
+    draw = ImageDraw.Draw (label)
+    font = ImageFont.load_default()
+    #draw.text((20,150),data, font=font, fill='black')
+    draw.text((20,50),data, font=font, fill='black')
+    label.paste(dmtx,(50,50))
+    label.save('etiqueta_3_'+data+'.png')
 
-# Añadimos el Datamatrix
-#label.paste(dmtx,(20,20))
-label.paste(dmtx,(50,50))
+    etiqueta = 'etiqueta_3_'+data+'.png'
+
+    #subprocess.run(["lp", "-d", "Brother_QL_820NWB",etiqueta])
+    #subprocess.run(["/usr/bin/lp", etiqueta])
+if __name__ == "__main__":
+    Impr_label("37B41")

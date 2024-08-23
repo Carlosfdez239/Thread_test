@@ -427,9 +427,9 @@ def leer_tdk(N_serie):
             ]
     #print(TDKS)
     crearFCT_pdf(N_serie,N_serie, TDKS)
-    eMail_to(N_serie)
+    eMail_to('FCT_'+ N_serie)
     return TDKS
 
 if __name__== "__main__":
-    filename = "Escanea el número de serie de la placa: "
+    filename = input("Escanea el número de serie de la placa: ")
     leer_tdk(filename)

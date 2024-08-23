@@ -32,6 +32,7 @@ password = 'iehmyzhxueesgmij'
 reciver_email = ["cfernandez@worldsensing.com","carlos.fernandez239@gmail.com"]
 
 def eMail_to(filename):
+    filename = filename + ".pdf"
     msg = MIMEMultipart()
     msg['From'] = sender_email
     msg['To'] = ",".join (reciver_email)

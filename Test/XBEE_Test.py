@@ -76,9 +76,9 @@ def Get_XBEE():
     for comando in XBEE_USB:
         ser.write(comando.encode())
         linea = ser.readline().decode().strip()
-        print(linea+'\n')
-        time.sleep(1)
-    
+        print(linea)
+
+        
     
 
 
@@ -98,10 +98,35 @@ def Get_XBEE():
         inicializar = """(echo -e "+++"; cat< /dev/ttyO4) | head -n 10 """
         stdin, stdout, stderr = ssh.exec_command(inicializar)
         #stdin, stdout, stderr = ssh.exec_command('cat /dev/ttyS0 > /dev/ttyS0')
-        time.sleep (10)
+        #time.sleep (10)
         respuesta = stdout.read().decode()
-        
-        print (respuesta)
+        print(f'respuesta: '+ respuesta)
+        n = 0
+        respuesta = ""
+        while True:
+            if respuesta == "":
+                respuesta = stdout.read().decode()
+                print(f'respuesta: '+ respuesta)
+                n += n
+                print (n)
+            elif respuesta =="OK":
+                print(respuesta+'\n')
+                break
+        #print (respuesta)
+        inicializar = """(echo -e "AT\n"; cat< /dev/ttyO4) | head -n 10 """
+        respuesta = stdout.read().decode()
+        print(f'respuesta: '+ respuesta)
+        n = 0
+        respuesta = ""
+        while True:
+            if respuesta == "":
+                respuesta = stdout.read().decode()
+                print(f'respuesta: '+ respuesta)
+                n += n
+                print (n)
+            elif respuesta =="OK":
+                print(respuesta+'\n')
+                break
     
     except paramiko.AuthenticationException:
         print("Fallo de autenticación, verifica el nombre de usuario y la contraseña")

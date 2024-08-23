@@ -7,10 +7,10 @@ Construimos un correo electrónico con los datos resultados
 # TO DO:
 #   23/08/2024   
 #               Implementar 
-#               [ ] --> Parámetros de entrada para email sender
-#               [ ] --> Parámetros para destinatario
-#               [ ] --> Respuesta principal
-#               [ ] --> Datos adjuntos
+#               [x] --> Parámetros de entrada para email sender
+#               [x] --> Parámetros para destinatario
+#               [x] --> Respuesta principal
+#               [x] --> Datos adjuntos
 #              
 
 '''

@@ -29,12 +29,12 @@ sender_email = "carlosfdez239@yahoo.es"
 password = 'iehmyzhxueesgmij'
 
 # Destinatario
-reciver_email = "cfernandez@worldsensing.com"
+reciver_email = ["cfernandez@worldsensing.com","carlos.fernandez239@gmail.com"]
 
-def eMail_to():
+def eMail_to(filename):
     msg = MIMEMultipart()
     msg['From'] = sender_email
-    msg['To'] = reciver_email
+    msg['To'] = ",".join (reciver_email)
     msg['Subject'] = "Resultados test Thread"
 
     # Cuerpo del correo
@@ -42,7 +42,7 @@ def eMail_to():
     msg.attach(MIMEText(body,'plain'))
 
     # Adjuntar archivo
-    filename = 'ECC0B3.pdf'
+    
     with open (filename, "rb") as attachment:
         part = MIMEBase('application', 'octet-stream')
         part.set_payload(attachment.read())
@@ -56,7 +56,7 @@ def eMail_to():
         #server = smtplib.SMTP_SSL(smtp_server, smtp_port)
         
         server = smtplib.SMTP(smtp_server, 587)
-        server.set_debuglevel(1)
+        #server.set_debuglevel(1)
         server.starttls()
         server.login(sender_email, password)
         print('Enviando el correo ...')
@@ -69,7 +69,7 @@ def eMail_to():
         server.quit()
 
 if __name__ == "__main__":
-    eMail_to()
+    eMail_to(filename = 'ECC0B3.pdf')
 
 
 

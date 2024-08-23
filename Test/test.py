@@ -287,7 +287,7 @@ dato_temperatura = leer_temperatura()
 fw = Get_FW()
 version = Get_version()
 bateria = Get_battery()
-tdks = leer_tdk()
+tdks = leer_tdk(Serial)
 print (f"El tiempo del test ha sido: {Total_test}")
 Info = Informe.crear_pdf(Serial,
                          Serial,

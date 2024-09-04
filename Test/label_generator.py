@@ -225,8 +225,59 @@ def Impr_Node_packaging_label(datam,Model,ERP_Code,Serial_N):
     subprocess.run(["lp","-o","portait","-d", IMPRESORA, ETIQUETA])
 
 
+def Impr_Israel_label(PartName):
+
+    font_size = 35 # Reduce o aumenta el tamaño según sea necesario
+    font_path = "/usr/share/fonts/truetype/noto/NotoSansDisplay-Regular.ttf"
+    font = ImageFont.truetype(font_path, font_size)
+    
+    #Agregamos los imagotipos y el logo de Ws
+    logo_ruta = DIRECTORIO_LOGO+"logo.png"
+    #imagotipo_ruta = DIRECTORIO_LOGO+"imagotipos_nodos.png"
+
+
+    # Convertimos milímetros a píxeles (asumiendo 300 DPI)
+    mm_to_px = 11.81  # factor de conversión de mm a px (300 DPI)
+
+    # Dimensionamos la etiqueta
+    label_width = int(30 * mm_to_px)  # 30 mm de longitud
+    label_height = int(50 * mm_to_px)  # 50 mm de altura
+
+    # Creamos el lienzo de la etiqueta
+    label = Image.new("RGB", (label_width, label_height), "white")
+    
+    draw = ImageDraw.Draw(label)
+    # Dibujar un marco alrededor de la etiqueta
+    marco_color = "grey"  # Color del marco
+    marco_grosor = 1  # Grosor del marco en píxeles
+    draw.rectangle([(marco_grosor+5)//2, 
+                    (marco_grosor+5)//2, 
+                    label_height-(marco_grosor+35)//2, 
+                    label_width-(marco_grosor+15)//2], 
+                   outline=marco_color, 
+                   width=marco_grosor)
+
+
+    #draw.rectangle(0,0,label_width,label_height, fill='white', outline=None ,width=1)
+    draw.text((2* mm_to_px, 9* mm_to_px), "For ISRAEL market", font=font, fill='black')
+    draw.text((2* mm_to_px, 12* mm_to_px), PartName.upper(), font=font, fill='black')
+
+
+    ETIQUETA = 'Israel' + '.png'
+
+    # Grabamos la etiqueta    
+    label.save(ETIQUETA)
+
+    # Mostramos en pantalla la etiqueta
+    #label.show()
+
+    # Mandamos a impresión la etiqueta
+    subprocess.run(["lp","-o","portait","-d", IMPRESORA, ETIQUETA])
+
+
 
 if __name__ == "__main__":
     #Impr_FCT_label("107102-2;102307;307B41")
     #Impr_EOL_label("107102-2;102307;307B41")
-    Impr_Node_packaging_label("LSG6TIL90X;2024080200167;150323","LS-G6_TIL90X", "LSG6TIL90X","150323")
+    #Impr_Node_packaging_label("LSG6TIL90X;2024080200167;150323","LS-G6_TIL90X", "LSG6TIL90X","150323")
+    Impr_Israel_label("LS-G6-TIL90-X-IL")

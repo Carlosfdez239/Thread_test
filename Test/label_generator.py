@@ -44,12 +44,31 @@ Convertiremos las dimensiones de milímetros a píxeles. Esto depende de la reso
 
 
 To Do:
-    [] pasar como parámetro la impresora
+    [] pasar como parámetro la impresora --> 
+    [] Crear métodos para resto de etiquetas
+        [] Producto nodos
+        [] Packaging nodos
+            [] Customizaciones
+        [] Producto Thread
+            [] Customizaciones
+        [] Packaging Thread
+            [] Accesorios
+            [] Cables
 '''
 from pylibdmtx.pylibdmtx import encode
 from PIL import Image, ImageDraw, ImageFont
 import os
 import subprocess
+
+from reportlab.lib import colors
+from reportlab.lib.units import mm
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
+from reportlab.platypus import Image as reportlab_Img
+from reportlab.lib.styles import getSampleStyleSheet
+
+IMPRESORA = "Brother_12"
+DIRECTORIO_LOGO = '/home/carlos/Documentos/Thread/outputs/'
+
 
 def Impr_FCT_label(data):
     # Convertimos milímetros a píxeles (asumiendo 300 DPI)
@@ -74,7 +93,7 @@ def Impr_FCT_label(data):
 
     try:
         # Usa la fuente DejaVu Sans con una altura de 10 píxeles
-        font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"  # Ruta en Linux, ajusta según tu SO
+        font_path = "/usr/share/fonts/truetype/noto/NotoSansDisplay-Regular.ttf"  # Ruta en Linux, ajusta según tu SO
         font_size = 70  # Tamaño de la fuente
         font = ImageFont.truetype(font_path, font_size)
     except IOError:
@@ -118,7 +137,7 @@ def Impr_EOL_label(data):
 
     try:
         # Usa la fuente DejaVu Sans con una altura de 10 píxeles
-        font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"  # Ruta en Linux, ajusta según tu SO
+        font_path = "/usr/share/fonts/truetype/noto/NotoSansDisplay-Regular.ttf"  # Ruta en Linux, ajusta según tu SO
         font_size = 25  # Tamaño de la fuente
         font = ImageFont.truetype(font_path, font_size)
     except IOError:
@@ -140,6 +159,110 @@ def Impr_EOL_label(data):
     subprocess.run(["lp","-o","portait","-d", "Brother_12", etiqueta])
 
 
+def Impr_Node_packaging_label(datam,Model,ERP_Code,Serial_N):
+    
+    #Agregamos los imagotipos y el logo de Ws
+    logo_ruta = DIRECTORIO_LOGO+"WS_Logo_3.png"
+    imagotipo_ruta = DIRECTORIO_LOGO+"imagotipos_nodos.png"
+
+    #Estilo de los párrafos
+    styles = getSampleStyleSheet()
+    style_normal= styles["Normal"]
+
+    #Agregamos texto
+    Model = Model
+    ERP_Code = ERP_Code
+    Serial_N = Serial_N
+
+    # Convertimos milímetros a píxeles (asumiendo 300 DPI)
+    mm_to_px = 11.81  # factor de conversión de mm a px (300 DPI)
+
+    # Dimensionamos la etiqueta
+    label_width = int(50 * mm_to_px)  # 50 mm de longitud
+    label_height = int(36 * mm_to_px)  # 36 mm de altura
+
+    # Creamos el lienzo de la etiqueta
+    label = Image.new("RGB", (label_width, label_height), "white")
+
+    # Definimos dimensiones del logo
+    img = reportlab_Img(logo_ruta)
+    img.drawHeight = 13*mm
+    img.drawWidth= 30*mm
+
+    # Generar el código Data Matrix
+    encoded = encode(datam.encode('utf8'))
+    dmtx = Image.frombytes('L', (encoded.width, encoded.height), encoded.pixels)
+
+    # Creamos la tabla del encabezado
+    data_encabezado = [[img,dmtx]]
+    
+    # Declaramos la tabla y su estilo
+    tabla_encabezado = Table(data_encabezado)
+    style_encabezado = TableStyle([('BACKGROUND',(0,0),(-1,-1), colors.white),
+                                   ('TEXTCOLOR',(0,0),(-1,-1), colors.black),
+                                   ('ALIGN', (0,0), (-1,-1),'LEFT'),
+                                   ('BOTTOMPADDING', (0,0), (-1,0), 10),
+                                   ('GRID',(0,0),(-1,-1),1, colors.white),])
+
+    tabla_encabezado.setStyle(style_encabezado)
+
+    # Agregamos una tabla para los contenidos del texto y definimos su estilo
+    data = [["Model:",Model],
+            ["ERP Code:", ERP_Code],
+            ["Serial Nb:", Serial_N]]
+    tabla = Table(data)
+    style= TableStyle ([
+        ('BACKGROUND',(0,0),(-1,-1),colors.white),            #(0 --> columna, 0 --> fila) el -1 indica el final
+        ('TEXTCOLOR',(0,0), (-1,-1), colors.black),
+        ('ALIGN', (0,0), (-1,-1),'LEFT'),
+        ('FONTNAME', (0,0), (-1,0), 'NotoSansDisplay-Regular'),
+        ('BOTTOMPADDING', (0,0), (-1,-1), 5),  
+        ('GRID', (0,0), (-1,-1),1, colors.white)])
+    tabla.setStyle(style)
+
+    # Generamos un espacio para separar el texto de la tabla
+    espacio = Spacer(1,12) 
+
+    # Insertamos la imagen de los imagotipos
+    img2 = reportlab_Img(imagotipo_ruta)
+    img2.drawHeight = 10*mm
+    img2.drawWidth= 30*mm   
+
+    # Agregamos la tabla para los iconos
+    data_ima = [["",img2]]
+    tabla_ima = Table(data_ima)
+    tabla_ima.setStyle(style)
+
+    # Ancho de la primera columna de las tablas en mm
+   
+    tabla_encabezado._argW[0]= 35*mm
+    tabla._argW[0]= 20*mm
+    tabla_ima._argW[0]= 20*mm
+
+    # Ancho de la segunda columna de las tablas en mm
+    tabla_encabezado._argW[1]= 15*mm
+    tabla._argW[1]= 30*mm
+    tabla_ima._argW[1]= 30*mm
+
+
+    # Lista de elementos que contendrá el documento
+    elements = [tabla_encabezado,espacio,tabla, espacio, tabla_ima]
+
+    contenido = datam.split(";")
+    ETIQUETA = 'etiqueta_4_' + contenido[-1] + '.png'
+
+    # Grabamos la etiqueta    
+    label.save(ETIQUETA)
+
+    # Mostramos en pantalla la etiqueta
+    label.show(ETIQUETA)
+
+    # Mandamos a impresión la etiqueta
+    subprocess.run(["lp","-o","portait","-d", IMPRESORA, ETIQUETA])
+
+
+
 if __name__ == "__main__":
-    Impr_FCT_label("107102-2;102307;307B41")
-    Impr_EOL_label("107102-2;102307;307B41")
+    #Impr_FCT_label("107102-2;102307;307B41")
+    #Impr_EOL_label("107102-2;102307;307B41")
+    Impr_Node_packaging_label("LSG6TIL90X;2024080200167;150323","LS-G6_TIL90X", "LSG6TIL90X","150323")

@@ -54,20 +54,20 @@ To Do:
         [] Packaging Thread
             [] Accesorios
             [] Cables
+
+
 '''
+from ast import Mod
 from pylibdmtx.pylibdmtx import encode
 from PIL import Image, ImageDraw, ImageFont
 import os
 import subprocess
 
-from reportlab.lib import colors
-from reportlab.lib.units import mm
-from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Spacer
-from reportlab.platypus import Image as reportlab_Img
-from reportlab.lib.styles import getSampleStyleSheet
-
 IMPRESORA = "Brother_12"
 DIRECTORIO_LOGO = '/home/carlos/Documentos/Thread/outputs/'
+font_size = 30  # Reduce o aumenta el tamaño según sea necesario
+font_path = "/usr/share/fonts/truetype/noto/NotoSansDisplay-Regular.ttf"
+font = ImageFont.truetype(font_path, font_size)
 
 
 def Impr_FCT_label(data):
@@ -160,14 +160,15 @@ def Impr_EOL_label(data):
 
 
 def Impr_Node_packaging_label(datam,Model,ERP_Code,Serial_N):
+
+    font_size = 25  # Reduce o aumenta el tamaño según sea necesario
+    font_path = "/usr/share/fonts/truetype/noto/NotoSansDisplay-Regular.ttf"
+    font = ImageFont.truetype(font_path, font_size)
     
     #Agregamos los imagotipos y el logo de Ws
-    logo_ruta = DIRECTORIO_LOGO+"WS_Logo_3.png"
-    imagotipo_ruta = DIRECTORIO_LOGO+"imagotipos_nodos.png"
+    logo_ruta = DIRECTORIO_LOGO+"logo.png"
+    #imagotipo_ruta = DIRECTORIO_LOGO+"imagotipos_nodos.png"
 
-    #Estilo de los párrafos
-    styles = getSampleStyleSheet()
-    style_normal= styles["Normal"]
 
     #Agregamos texto
     Model = Model
@@ -178,75 +179,40 @@ def Impr_Node_packaging_label(datam,Model,ERP_Code,Serial_N):
     mm_to_px = 11.81  # factor de conversión de mm a px (300 DPI)
 
     # Dimensionamos la etiqueta
-    label_width = int(50 * mm_to_px)  # 50 mm de longitud
-    label_height = int(36 * mm_to_px)  # 36 mm de altura
+    label_width = int(36 * mm_to_px)  # 50 mm de longitud
+    label_height = int(50 * mm_to_px)  # 36 mm de altura
 
     # Creamos el lienzo de la etiqueta
     label = Image.new("RGB", (label_width, label_height), "white")
 
-    # Definimos dimensiones del logo
-    img = reportlab_Img(logo_ruta)
-    img.drawHeight = 13*mm
-    img.drawWidth= 30*mm
+
+    draw = ImageDraw.Draw(label)
+    
+    draw.text((2* mm_to_px, 8* mm_to_px), "Model: " + Model, font=font, fill='black')
+    draw.text((2* mm_to_px, 11* mm_to_px), "ERP_Code: " + ERP_Code, font=font, fill='black')
+    draw.text((2* mm_to_px, 14* mm_to_px), "Serial_Nb: " + Serial_N, font=font, fill='black')
+    
+    # Cargar e insertar la imagen .png en la etiqueta
+    image_path = DIRECTORIO_LOGO+"iconos.png"
+    insert_image = Image.open(image_path)
+    insert_image = insert_image.resize((int(15 * mm_to_px), int(10 * mm_to_px)))  # Redimensionar si es necesario
+    label.paste(insert_image, (label_width - insert_image.width, int(16* mm_to_px)))  # Posición en la esquina superior derecha
+
+    # Cargar e insertar el logo de Worldsensing
+    image_path = logo_ruta
+    insert_image = Image.open(image_path)
+    insert_image = insert_image.resize((int(28 * mm_to_px), int(8 * mm_to_px)))  # Redimensionar si es necesario
+    label.paste(insert_image, (0, 0))  # Posición en la esquina superior izda
 
     # Generar el código Data Matrix
     encoded = encode(datam.encode('utf8'))
-    dmtx = Image.frombytes('L', (encoded.width, encoded.height), encoded.pixels)
+    dmtx = Image.frombytes('RGB', (encoded.width, encoded.height), encoded.pixels)
+    dmtx.save("dmtx_debug.png")
+    label.paste(dmtx,(label_width-encoded.width,int(4*mm_to_px)))
+    #dmtx.show()
 
-    # Creamos la tabla del encabezado
-    data_encabezado = [[img,dmtx]]
-    
-    # Declaramos la tabla y su estilo
-    tabla_encabezado = Table(data_encabezado)
-    style_encabezado = TableStyle([('BACKGROUND',(0,0),(-1,-1), colors.white),
-                                   ('TEXTCOLOR',(0,0),(-1,-1), colors.black),
-                                   ('ALIGN', (0,0), (-1,-1),'LEFT'),
-                                   ('BOTTOMPADDING', (0,0), (-1,0), 10),
-                                   ('GRID',(0,0),(-1,-1),1, colors.white),])
-
-    tabla_encabezado.setStyle(style_encabezado)
-
-    # Agregamos una tabla para los contenidos del texto y definimos su estilo
-    data = [["Model:",Model],
-            ["ERP Code:", ERP_Code],
-            ["Serial Nb:", Serial_N]]
-    tabla = Table(data)
-    style= TableStyle ([
-        ('BACKGROUND',(0,0),(-1,-1),colors.white),            #(0 --> columna, 0 --> fila) el -1 indica el final
-        ('TEXTCOLOR',(0,0), (-1,-1), colors.black),
-        ('ALIGN', (0,0), (-1,-1),'LEFT'),
-        ('FONTNAME', (0,0), (-1,0), 'NotoSansDisplay-Regular'),
-        ('BOTTOMPADDING', (0,0), (-1,-1), 5),  
-        ('GRID', (0,0), (-1,-1),1, colors.white)])
-    tabla.setStyle(style)
-
-    # Generamos un espacio para separar el texto de la tabla
-    espacio = Spacer(1,12) 
-
-    # Insertamos la imagen de los imagotipos
-    img2 = reportlab_Img(imagotipo_ruta)
-    img2.drawHeight = 10*mm
-    img2.drawWidth= 30*mm   
-
-    # Agregamos la tabla para los iconos
-    data_ima = [["",img2]]
-    tabla_ima = Table(data_ima)
-    tabla_ima.setStyle(style)
-
-    # Ancho de la primera columna de las tablas en mm
-   
-    tabla_encabezado._argW[0]= 35*mm
-    tabla._argW[0]= 20*mm
-    tabla_ima._argW[0]= 20*mm
-
-    # Ancho de la segunda columna de las tablas en mm
-    tabla_encabezado._argW[1]= 15*mm
-    tabla._argW[1]= 30*mm
-    tabla_ima._argW[1]= 30*mm
-
-
-    # Lista de elementos que contendrá el documento
-    elements = [tabla_encabezado,espacio,tabla, espacio, tabla_ima]
+    label.save("output_test.png")
+    #label.show()
 
     contenido = datam.split(";")
     ETIQUETA = 'etiqueta_4_' + contenido[-1] + '.png'
@@ -255,7 +221,7 @@ def Impr_Node_packaging_label(datam,Model,ERP_Code,Serial_N):
     label.save(ETIQUETA)
 
     # Mostramos en pantalla la etiqueta
-    label.show(ETIQUETA)
+    #label.show()
 
     # Mandamos a impresión la etiqueta
     subprocess.run(["lp","-o","portait","-d", IMPRESORA, ETIQUETA])

@@ -252,16 +252,13 @@ def Impr_Israel_label(PartName):
     marco_grosor = 1  # Grosor del marco en píxeles
     draw.rectangle([(marco_grosor+5)//2, 
                     (marco_grosor+5)//2, 
-                    label_height-(marco_grosor+35)//2, 
+                    label_height-(marco_grosor)//2, 
                     label_width-(marco_grosor+15)//2], 
                    outline=marco_color, 
                    width=marco_grosor)
-
-
-    #draw.rectangle(0,0,label_width,label_height, fill='white', outline=None ,width=1)
+    
     draw.text((2* mm_to_px, 9* mm_to_px), "For ISRAEL market", font=font, fill='black')
     draw.text((2* mm_to_px, 12* mm_to_px), PartName.upper(), font=font, fill='black')
-
 
     ETIQUETA = 'Israel' + '.png'
 

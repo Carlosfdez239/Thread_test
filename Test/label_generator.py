@@ -184,31 +184,29 @@ def Impr_Node_packaging_label(datam,Model,ERP_Code,Serial_N):
 
     # Creamos el lienzo de la etiqueta
     label = Image.new("RGB", (label_width, label_height), "white")
-
-
-    draw = ImageDraw.Draw(label)
-    
-    draw.text((2* mm_to_px, 8* mm_to_px), "Model: " + Model, font=font, fill='black')
-    draw.text((2* mm_to_px, 11* mm_to_px), "ERP_Code: " + ERP_Code, font=font, fill='black')
-    draw.text((2* mm_to_px, 14* mm_to_px), "Serial_Nb: " + Serial_N, font=font, fill='black')
     
     # Cargar e insertar la imagen .png en la etiqueta
     image_path = DIRECTORIO_LOGO+"iconos.png"
     insert_image = Image.open(image_path)
-    insert_image = insert_image.resize((int(15 * mm_to_px), int(10 * mm_to_px)))  # Redimensionar si es necesario
+    insert_image = insert_image.resize((int(18 * mm_to_px), int(13 * mm_to_px)))  # Redimensionar si es necesario
     label.paste(insert_image, (label_width - insert_image.width, int(16* mm_to_px)))  # Posición en la esquina superior derecha
 
     # Cargar e insertar el logo de Worldsensing
     image_path = logo_ruta
     insert_image = Image.open(image_path)
-    insert_image = insert_image.resize((int(28 * mm_to_px), int(8 * mm_to_px)))  # Redimensionar si es necesario
+    insert_image = insert_image.resize((int(29 * mm_to_px), int(9 * mm_to_px)))  # Redimensionar si es necesario
     label.paste(insert_image, (0, 0))  # Posición en la esquina superior izda
+
+    draw = ImageDraw.Draw(label)
+    draw.text((2* mm_to_px, 9* mm_to_px), "Model: " + Model, font=font, fill='black')
+    draw.text((2* mm_to_px, 12* mm_to_px), "ERP_Code: " + ERP_Code, font=font, fill='black')
+    draw.text((2* mm_to_px, 15* mm_to_px), "Serial_Nb: " + Serial_N, font=font, fill='black')
 
     # Generar el código Data Matrix
     encoded = encode(datam.encode('utf8'))
     dmtx = Image.frombytes('RGB', (encoded.width, encoded.height), encoded.pixels)
     dmtx.save("dmtx_debug.png")
-    label.paste(dmtx,(label_width-encoded.width,int(4*mm_to_px)))
+    label.paste(dmtx,(label_width-encoded.width,int(8*mm_to_px)))
     #dmtx.show()
 
     label.save("output_test.png")

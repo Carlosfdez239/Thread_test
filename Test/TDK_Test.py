@@ -35,7 +35,7 @@ from eMail import eMail_to
 from Informe_FCT import crearFCT_pdf
 
 
-FTDI = '/dev/ttyUSB1'
+FTDI = '/dev/ttyUSB0'
 TOLERANCIA_AMP = 1.48
 
 # Preparar MSP para consulta presion

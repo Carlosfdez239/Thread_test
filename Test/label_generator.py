@@ -240,8 +240,8 @@ def Impr_Israel_label(PartName):
     mm_to_px = 11.81  # factor de conversión de mm a px (300 DPI)
 
     # Dimensionamos la etiqueta
-    label_width = int(30 * mm_to_px)  # 30 mm de longitud
-    label_height = int(50 * mm_to_px)  # 50 mm de altura
+    label_width = int(27 * mm_to_px)  # 30 mm de longitud
+    label_height = int(28 * mm_to_px)  # 50 mm de altura
 
     # Creamos el lienzo de la etiqueta
     label = Image.new("RGB", (label_width, label_height), "white")
@@ -250,15 +250,16 @@ def Impr_Israel_label(PartName):
     # Dibujar un marco alrededor de la etiqueta
     marco_color = "grey"  # Color del marco
     marco_grosor = 1  # Grosor del marco en píxeles
-    draw.rectangle([(marco_grosor+5)//2, 
-                    (marco_grosor+5)//2, 
-                    label_height-(marco_grosor)//2, 
-                    label_width-(marco_grosor+15)//2], 
+    draw.rectangle([(marco_grosor), 
+                    (marco_grosor), 
+                    label_height-(marco_grosor), 
+                    label_width-(marco_grosor)], 
                    outline=marco_color, 
+                   fill = "white",
                    width=marco_grosor)
     
-    draw.text((2* mm_to_px, 9* mm_to_px), "For ISRAEL market", font=font, fill='black')
-    draw.text((2* mm_to_px, 12* mm_to_px), PartName.upper(), font=font, fill='black')
+    draw.text((1* mm_to_px, 6* mm_to_px), "For ISRAEL market", font=font, fill='black')
+    draw.text((1* mm_to_px, 9* mm_to_px), PartName.upper(), font=font, fill='black')
 
     ETIQUETA = 'Israel' + '.png'
 

@@ -22,7 +22,7 @@ import serial
 import time
 from colorama import Fore, Style, Back
 
-BK='/dev/ttyUSB0'
+BK='/dev/ttyUSB2'
 
 def Parametriza_BK():
     # Abrir serial1 para mandar command a la carga electronica BK8600

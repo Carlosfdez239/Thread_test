@@ -40,7 +40,7 @@ import Ip_scanner
 from colorama import Fore, Style, Back
 import Informe
 from Pressure_test import leer_presion
-from Temp_test import leer_temperatura
+from Temp_test import Get_Temp
 from Version import Get_version
 from FW_test import Get_FW
 from Battery import Get_battery
@@ -283,7 +283,7 @@ ser.close()
 Fin_test = time.time()
 Total_test = Fin_test-Crono
 dato_presion = leer_presion()
-dato_temperatura = leer_temperatura()
+dato_temperatura = Get_Temp()
 fw = Get_FW()
 version = Get_version()
 bateria = Get_battery()

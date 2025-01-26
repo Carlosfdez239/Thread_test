@@ -277,5 +277,5 @@ def Impr_Israel_label(PartName):
 if __name__ == "__main__":
     #Impr_FCT_label("107102-2;102307;307B41")
     #Impr_EOL_label("107102-2;102307;307B41")
-    #Impr_Node_packaging_label("LSG6TIL90X;2024080200167;150323","LS-G6_TIL90X", "LSG6TIL90X","150323")
-    Impr_Israel_label("LS-G6-TIL90-X-IL")
+    Impr_Node_packaging_label("LSG6TIL90X;2024080200167;150323","LS-G6_TIL90X", "LSG6TIL90X","150323")
+    #Impr_Israel_label("LS-G6-TIL90-X-IL")

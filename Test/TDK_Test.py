@@ -33,9 +33,10 @@ from colorama import Fore, Style, Back
 from BK_param import Parametriza_BK
 from eMail import eMail_to
 from Informe_FCT import crearFCT_pdf
+import deteccion_USB as USB
 
 
-FTDI = '/dev/ttyUSB0'
+#FTDI = '/dev/ttyUSB0'
 TOLERANCIA_AMP = 1.48
 
 # Preparar MSP para consulta presion
@@ -43,7 +44,7 @@ TDK_DP1 = ["l1", "l2", "l3"]
 TDK_DP2 = ["m1", "m2", "m3"]  
 TDK_DP3 = ["n1", "n2", "n3"]  
 
-def leer_tdk(N_serie):
+def leer_tdk(N_serie, FTDI, BK):
     respuesta =""
     # Abrir serial para mandar command leer presión
     ser = serial.Serial(FTDI, 115200)   # Reemplaza '/dev/ttyFTDI' con el puerto correcto
@@ -54,7 +55,7 @@ def leer_tdk(N_serie):
         ser.write(comando.encode())
         #print(f"Ejecutando comando: {comando}")
         puerto = "DP1"
-        Resultado = Parametriza_BK()
+        Resultado = Parametriza_BK(BK)
         time.sleep(0.4)
         # Analizamos el resultado para los 12v
         if comando == "l1":
@@ -156,7 +157,7 @@ def leer_tdk(N_serie):
         ser.write(comando.encode())
         #print(f"Ejecutando comando: {comando}")
         puerto = "DP2"
-        Resultado = Parametriza_BK()
+        Resultado = Parametriza_BK(BK)
         time.sleep(0.4)
         # Analizamos el resultado para los 12v
         if comando == "m1":
@@ -258,7 +259,7 @@ def leer_tdk(N_serie):
         ser.write(comando.encode())
         #print(f"Ejecutando comando: {comando}")
         puerto = "DP3"
-        Resultado = Parametriza_BK()
+        Resultado = Parametriza_BK(BK)
         time.sleep(0.4)
         # Analizamos el resultado para los 12v
         if comando == "n1":

@@ -16,8 +16,8 @@ HOSTNAME = '192.168.5.3'
 PORT = 22
 USERNAME = 'root'
 PASSWORD = 'imus42'
-FTDI = '/dev/ttyUSB0'
-RS232='/dev/ttyUSB1'
+#FTDI = '/dev/ttyUSB0'
+#RS232='/dev/ttyUSB1'
 VERSION ='http://localhost/api/version'
 
 def Get_version():

@@ -13,14 +13,14 @@ import serial
 import time
 from colorama import Fore, Style, Back
 
-FTDI = '/dev/ttyUSB0'
-RS232='/dev/ttyUSB1'
+#FTDI = '/dev/ttyUSB0'
+#RS232='/dev/ttyUSB1'
 
 
 # Preparar MSP para consulta presion
 Q_Press = "A5"  
 
-def leer_presion():
+def leer_presion(FTDI):
     respuesta =""
     presion ="A5"
     # Abrir serial para mandar command leer presión

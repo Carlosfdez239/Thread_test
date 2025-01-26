@@ -21,10 +21,13 @@ import subprocess
 import serial
 import time
 from colorama import Fore, Style, Back
+import deteccion_USB as USB
 
-BK='/dev/ttyUSB2'
 
-def Parametriza_BK():
+#BK='/dev/ttyUSB2'
+
+
+def Parametriza_BK(BK):
     # Abrir serial1 para mandar command a la carga electronica BK8600
     ser1 = serial.Serial(BK, 9600,bytesize=serial.EIGHTBITS, 
                         parity=serial.PARITY_NONE, 
@@ -84,4 +87,5 @@ def Parametriza_BK():
         return Volt, Amp, Instrument, Ver
     
 if __name__== "__main__":
-    Parametriza_BK()
+    BK = USB.asignar_tty()
+    Parametriza_BK(BK)

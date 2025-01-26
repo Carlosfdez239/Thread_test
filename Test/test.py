@@ -45,6 +45,7 @@ from Version import Get_version
 from FW_test import Get_FW
 from Battery import Get_battery
 from TDK_Test import leer_tdk
+import deteccion_USB as USB
 
 # Utilizamos Crono para capturar el tiempo del test
 Crono = time.time()
@@ -62,8 +63,19 @@ password = 'imus42'
 USB_Serial = '0123456789ABD8C'
 good = "[ PASS ]"
 bad = "[ FAIL ]"
-FTDI = '/dev/ttyUSB0'
-RS232='/dev/ttyUSB1'
+SERIAL_FTDI='FTDBWDL3'
+SERIAL_RS232='AU05IC2W'
+SERIAL_BK='AU067KGU'
+
+FTDI = USB.asignar_tty(SERIAL_FTDI)
+print(f'puerto asignado a la conexión FTDI --> {FTDI}')
+RS232 = USB.asignar_tty(SERIAL_RS232)
+print(f'Puerto asignado a la comunicación RS232 --> {RS232}')
+BK = USB.asignar_tty(SERIAL_BK)
+print(f'Puerto asignado a la comunicación con la BK --> {BK}')
+
+#FTDI = '/dev/ttyUSB0'
+#RS232='/dev/ttyUSB1'
 
 # Preparar DP1 para USB
 DP1_USB = ["G1","e2","e6","f0","f1","J0","J1"]    
@@ -200,9 +212,10 @@ for comando in DP1_texto:
     respuesta += ser2.readline().decode().strip()
     time.sleep(0.4)
     if "PASS" in respuesta:
-        DP1_formateado = f"{Fore.GREEN}{"RS232_in_DP1 --> "+good}{Style.RESET_ALL}"
+        DP1_formateado = f'{Fore.GREEN}{"RS232_in_DP1 --> "+good}{Style.RESET_ALL}'
+        print(f'Respuesta DP1: {DP1_formateado}')
         break
-print("Respuesta DP1:", DP1_formateado)
+
 ser2.close()
 
 # Cierra la conexión serie
@@ -233,7 +246,7 @@ for comando in DP2_texto:
     respuesta += ser3.readline().decode().strip()
     time.sleep(0.4)
     if "PASS" in respuesta:
-        DP2_formateado = f"{Fore.GREEN}{"RS232_in_DP2 --> "+good}{Style.RESET_ALL}"
+        DP2_formateado = f'{Fore.GREEN}{"RS232_in_DP2 --> "+good}{Style.RESET_ALL}'
         break
 
 #print("Respuesta DP2:", respuesta)
@@ -264,7 +277,7 @@ for comando in DP3_texto:
     respuesta += ser4.readline().decode().strip()
     time.sleep(0.4)
     if "PASS" in respuesta:
-        DP3_formateado = f"{Fore.GREEN}{"RS232_in_DP3 --> "+good}{Style.RESET_ALL}"
+        DP3_formateado = f'{Fore.GREEN}{"RS232_in_DP3 --> "+good}{Style.RESET_ALL}'
         break
     
 print("Respuesta DP3:", DP3_formateado)
@@ -282,12 +295,12 @@ ser.close()
 #ssh.close()
 Fin_test = time.time()
 Total_test = Fin_test-Crono
-dato_presion = leer_presion()
+dato_presion = leer_presion(FTDI)
 dato_temperatura = Get_Temp()
 fw = Get_FW()
 version = Get_version()
 bateria = Get_battery()
-tdks = leer_tdk(Serial)
+tdks = leer_tdk(Serial, FTDI, BK)
 print (f"El tiempo del test ha sido: {Total_test}")
 Info = Informe.crear_pdf(Serial,
                          Serial,
